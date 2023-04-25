@@ -1,0 +1,18 @@
+<%- include("partials/header"); -%>
+
+<h1>Home</h1>
+
+<p><%= startingContent %></p>
+
+<% posts.forEach(post => { %>
+    <h1><%= post.title %></h1>
+    <% let content = post.content; %>
+    <% if(content.length > 100) { %>
+        <% let truncatedContent = content.slice(0, 100); %>
+        <p><%= truncatedContent %>... <a href="/posts/<%=post.title%>" >Read More</a></p>
+    <% } else { %>
+        <p><%= post.content %> <a href="/posts/<%=post.title%>" >Read More</a></p>
+    <% } %>
+<% }); %>
+<!-- Need to add ellipses -->
+<%- include("partials/footer"); -%>
